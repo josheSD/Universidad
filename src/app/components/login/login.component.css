@@ -1,0 +1,9 @@
+.login img+h4 {
+    text-transform: capitalize;
+    font-size: 19px;
+}
+
+.login img {
+    height: 45px;
+    width: 132px;
+}
