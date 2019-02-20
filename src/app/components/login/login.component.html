@@ -1,10 +1,92 @@
-<div class="login">
+<section class="logo">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 d-flex justify-content-between pt-3">
                 <img src="../../../assets/imagenes/logologo.jpg" class="img-fluid my-img" alt="">
-                <h4 class="mr-5">Matricula en Línea</h4>
+                <h4 class="mr-4 mt-3">Matricula en Línea</h4>
             </div>
         </div>
     </div>
-</div>
+</section>
+
+<section class="login position-relative">
+    <div class="container-fluid position-absolute">
+        <div class="row">
+            <div class="col-12  offset-md-9 col-md-3 my-fondo2 ">
+                <h4 class="text-white text-center pt-5 pb-4">Ingresa a tu cuenta</h4>
+                <form class="mx-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" aria-describedby="codigoHelp" placeholder="Ingrese su codigo">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Ingrese su contraseña">
+                    </div>
+                    <div class="form-group">
+                        <img src="{{codigo[this.numeroInt]}}" (click)="CambiarCaptcha()" class="form-control img-fluid my-img">
+                    </div>
+                    <div class="form-group">
+                        <p class="text-white">Haz click en la imagen para cambiarla</p>
+                    </div>
+                    <div class="form-group mb-4">
+                        <input type="text" class="form-control" id="txtCaptcha" placeholder="Ingrese las letras de las imagen">
+                    </div>
+
+                    <button type="button" class="btn btn-danger my-buttonOne font-weight-bold" (click)="Validar()">Ingresar <i class="fa fa-play-circle text-white"></i></button>
+                    <button type="button" class="btn btn-light  my-buttonTwo font-weight-bold">Limpiar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <article class="my-fondo position-absolute w-100">
+        <h5 class="text-white ml-4 m-0 py-2 ">Matriculate desde tu computadora, table o smartphone.</h5>
+    </article>
+</section>
+
+<section class="footer">
+    <div class="container-fluid">
+        <div class="row pt-3">
+            <div class="col-12 col-md-6 border-right">
+                <div class="row text-center border-bottom pb-2">
+                    <div class="col-12 ">
+
+                        <p class="my-p mb-2">Servicio de Atención al Estudiante (SAE)</p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <img src="../../../assets/imagenes/whatsapp.jpg" alt="" height="25">
+                        <p class="my-p d-inline-block ">960 252 970</p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <img src="../../../assets/imagenes/phone.jpg" alt="" height="25">
+                        <p class="my-p d-inline-block">01 315-9600 (Opción1-1)</p>
+                    </div>
+                    <div class="col-12 col-md-4">
+
+                        <p class="my-p d-inline-block ">sae.utp.edu.pe</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-12 col-md-6 ">
+                <div class="row d-flex justify-content-around text-center  border-bottom pb-2">
+                    <div class="col-12 ">
+                        <p class="my-p mb-2">Mesa de Ayuda</p>
+                    </div>
+                    <div class="col-12 col-md-5">
+                        <img src="../../../assets/imagenes/phone.jpg" alt="" height="25">
+                        <p class="my-p  text-md-left d-inline-block"> 01 315-9606</p>
+                    </div>
+                    <div class="col-12 col-md-5">
+                        <p class="my-p text-md-right d-inline-block">mesadeayuda@utp-idat.edu.pe</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row text-center my-2">
+            <div class="col-12">
+                <p class="my-p">Copyright © 2017, Universidad Tecnológica del Perú | <a href="#"> Términos y condiciones de uso</a> | <a href="#">Aviso de privacidad</a> </p>
+            </div>
+        </div>
+    </div>
+</section>

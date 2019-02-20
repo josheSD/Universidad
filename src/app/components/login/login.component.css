@@ -1,9 +1,105 @@
-.login img+h4 {
-    text-transform: capitalize;
-    font-size: 19px;
+/* Google Fonts 
+font-family: 'Oswald', sans-serif;
+font-family: 'PT Sans', sans-serif;
+font-family: 'Open Sans', sans-serif;
+*/
+
+
+/*section logo*/
+
+.logo {
+    height: 75px;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.login img {
+.logo img+h4 {
+    text-transform: capitalize;
+    font-size: 17px;
+}
+
+.logo img {
     height: 45px;
     width: 132px;
+}
+
+
+/*section login*/
+
+.login {
+    background-image: url(../../../assets/imagenes/background.png);
+    height: 92vh;
+    background-size: cover;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.login .my-fondo {
+    background-color: rgba(176, 30, 49, 0.64);
+}
+
+.login .my-fondo h5 {
+    font-size: 13px;
+}
+
+.login .my-fondo2 h4 {
+    font-size: 20px;
+}
+
+.login .my-fondo2 {
+    background-color: rgba(156, 32, 55, 0.8);
+    height: 92vh;
+}
+
+.login .my-img {
+    height: 62px;
+}
+
+.login .my-img:hover {
+    cursor: pointer;
+}
+
+.login .my-fondo2 p {
+    font-size: 13px;
+}
+
+.login .my-fondo2 .my-buttonOne {
+    background-color: #b7022b;
+    border: 1px solid #b7022b;
+    border-radius: 0px;
+    margin-left: 8px;
+    height: 50px;
+    width: 125px;
+}
+
+.login .my-fondo2 .my-buttonTwo {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 0px;
+    margin-left: 10px;
+    height: 50px;
+    width: 125px;
+    color: #b7022b
+}
+
+.login input {
+    border: 1px solid white;
+    border-radius: 0px;
+    background-color: inherit;
+    color: white;
+}
+
+.login input::placeholder {
+    color: white;
+    font-size: 15px;
+}
+
+
+/*section foooter*/
+
+.footer .my-p {
+    font-size: 11px;
+    margin-bottom: 0px;
+}
+
+.footer .border-bottom {
+    border-bottom: 1px solid red;
 }
