@@ -16,19 +16,20 @@
                 <h4 class="text-white text-center pt-5 pb-4">Ingresa a tu cuenta</h4>
                 <form class="mx-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" aria-describedby="codigoHelp" placeholder="Ingrese su codigo">
+                        <input type="text" class="form-control my" placeholder="Ingrese su codigo" autofocus>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Ingrese su contraseña">
+                        <input type="password" class="form-control my" placeholder="Ingrese su contraseña">
                     </div>
                     <div class="form-group">
                         <img src="{{codigo[this.numeroInt]}}" (click)="CambiarCaptcha()" class="form-control img-fluid my-img">
                     </div>
                     <div class="form-group">
                         <p class="text-white">Haz click en la imagen para cambiarla</p>
+                        <span id="aviso"></span>
                     </div>
                     <div class="form-group mb-4">
-                        <input type="text" class="form-control" id="txtCaptcha" placeholder="Ingrese las letras de las imagen">
+                        <input type="text" class="form-control my" id="txtCaptcha" (keyup.enter)="Validar()" placeholder="Ingrese las letras de las imagen">
                     </div>
 
                     <button type="button" class="btn btn-danger my-buttonOne font-weight-bold" (click)="Validar()">Ingresar <i class="fa fa-play-circle text-white"></i></button>

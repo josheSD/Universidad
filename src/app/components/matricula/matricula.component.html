@@ -1,0 +1,101 @@
+<div class="matricula position-relative ">
+    <div class="container-fluid position-absolute">
+        <div class="row my-bg shadow-sm ">
+            <div class="col-12 col-md-2">
+                <div class="row my-design">
+                    <div class="col-12">
+                        <img src="../../../assets/imagenes/logo.png" width="70" class="img-fluid py-4 ml-4 " alt="">
+                        <nav class="my-links">
+                            <a href="" class="d-block py-2 text-white text-decoration-none">Datos alumno</a>
+                            <a href="" class="d-block py-2 text-white text-decoration-none"><i class="fas fa-sync-alt mr-2"></i>Matriculate</a>
+                            <a href="" class="d-block py-2 text-white text-decoration-none"><i class="fas fa-calendar-minus mr-2"></i>Tu horario</a>
+                            <a href="" class="d-block py-2 text-white text-decoration-none"><i class="fas fa-window-restore mr-2"></i>Pensiones</a>
+                            <a href="" class="d-block py-2 text-white text-decoration-none"><i class="fas fa-indent mr-2"></i>Solicita una <br> nueva sección</a>
+                            <a [routerLink]="['']" class="d-block py-2 text-white text-decoration-none"><i class="fas fa-sign-in-alt mr-2"></i>Cerrar Sección</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-7">
+                <div class="row my-bg-2 mt-3 mx-1 shadow-sm">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="text-danger">Cursos a Matricular</h4>
+                            <a href="" class="pt-1 text-primary">Guía Interactiva de Matrícula de Línea <i class="fa fa-angle-up text-black-50 font-weight-bold ml-3"></i></a>
+                        </div>
+
+
+                        <hr>
+                        <p>Aquí encontrarás la lista de cursos para matricularte. Elige primero los cursos de menor nivel para avanzar de acuerdo con tu plan de estudios.
+                        </p>
+                    </div>
+                </div>
+                <div class="row my-bg-2 mt-4 mx-1 shadow-sm mb-4">
+                    <div class="col-12">
+                        <h4 class="text-danger">Horario</h4>
+                        <hr>
+                        <p>A continuación te mostraremos tu horario seleccionado</p>
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="row my-bg-2 mt-3 mr-1 shadow-sm ">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="text-danger">Resumen</h4>
+                            <a href="" class="pt-1"><i class="fa fa-angle-up text-black-50 font-weight-bold ml-3"></i></a>
+                        </div>
+
+                        <hr>
+                        <p><span class="badge badge-danger">00</span> Cursos seleccionados</p>
+                        <p><span class="badge badge-danger">00</span> Horas semanales seleccionadas </p>
+                        <p><span class="badge badge-danger">00</span> Creditos seleccionados</p>
+                    </div>
+                </div>
+                <div class="row my-bg-2 mt-4 mr-1 shadow-sm pb-3 pt-2">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="text-danger">Importante</h4>
+                            <a href="" class="pt-1"><i class="fa fa-angle-up text-black-50 font-weight-bold ml-3"></i></a>
+                        </div>
+
+                        <hr>
+                        <p>No olvides usar el botón "Procesar Matricula" para registrar los cursos y horarios seleccionados</p>
+                        <button class="btn btn-success btn-block">Procesar Matricula</button>
+                    </div>
+                </div>
+                <div class="row my-bg-2 mt-4 mr-1 shadow-sm pb-3 pt-2">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="text-danger">Contáctanos</h4>
+                            <a href="" class="pt-1"><i class="fa fa-angle-up text-black-50 font-weight-bold ml-3"></i></a>
+                        </div>
+
+                        <hr>
+                        <h6 class="font-weight-bold m-0">Servicio de Atención al Estudiante (SAE)</h6>
+                        <p class="m-0">sae.utp.edu</p>
+                        <p class="m-0">960 252 970</p>
+                        <p class="m-0">01 315-9600 (Opcion 1- 1)</p>
+                        <h6 class="font-weight-bold m-0">Mesa de ayuda</h6>
+                        <p class="m-0">mesadeayuda@utp.idat.edu.pe</p>
+                        <p class="m-0">01 315-9606</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div id="dialogoverlay"></div>
+                        <div id="dialogbox">
+                            <div>
+                                <div id="dialogboxhead"></div>
+                                <div id="dialogboxbody"></div>
+                                <div id="dialogboxfoot"><button (click)='Cerrar()'>OK</button></div>
+                            </div>
+                        </div>
+                        <button (click)="CustomAlert('Hola')">Custom Alert 2</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
