@@ -1,0 +1,55 @@
+<div class="register">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4 mx-auto mt-2 mb-1 mt-md-3 ">
+                <div *ngIf="isSignedUp" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="p-1 my-message">{{MessageSuccess.message}}<strong>¡Por favor Inicie sesión!</strong></div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 mx-auto  mt-md-5 my-bg shadow-sm">
+                <form name="form" class="mx-2 my-2" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <div class="form-group">
+                        <label for="name" class="text-white">Your full name : </label>
+                        <input type="text" id="name" class="form-control my" name="name" [(ngModel)]="form.name" #name="ngModel" autofocus required />
+                        <div *ngIf="f.submitted && name.invalid">
+                            <div *ngIf="name.errors.required" class="text-warning">Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="text-white">Username : </label>
+                        <input type="text" id="username" class="form-control my" name="username" [(ngModel)]="form.username" #username="ngModel" required />
+                        <div *ngIf="f.submitted && username.invalid">
+                            <div *ngIf="username.errors.required" class="text-warning">Username is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="text-white">Email :</label>
+                        <input type="text" id="email" class="form-control my" name="email" [(ngModel)]="form.email" #email="ngModel" required email />
+                        <div *ngIf="f.submitted && email.invalid">
+                            <div *ngIf="email.errors.required" class="text-warning">Email is required</div>
+                            <div *ngIf="email.errors.email" class="text-warning">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="text-white">Password: </label>
+                        <input type="password" id="password" class="form-control my" name="password" [(ngModel)]="form.password" #password="ngModel" required minlength="6" />
+                        <div *ngIf="f.submitted && password.invalid">
+                            <div *ngIf="password.errors.required" class="text-warning">Password is required</div>
+                            <div *ngIf="password.errors.minlength" class="text-warning">Password must be at least 6 characters</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary  my-buttonOne font-weight-bold ml-3">Registrar</button>
+                    <button class="btn btn-light  my-buttonTwo font-weight-bold ml-3" [routerLink]="['']">Iniciar Sesion</button>
+                    <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning text-warning">
+                        Signup failed!<br/>{{errorMessage}}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+.register {
+    background-image: url('../../../assets/imagenes/background-register.jpg');
+    height: 100vh;
+    background-position: center center;
+    background-size: cover;
+}
+
+.register .my-bg {
+    background-color: rgba(176, 30, 40, 0.5);
+}
+
+.register .my-buttonOne {
+    background-color: #b7022b;
+    border: 1px solid #b7022b;
+    border-radius: 0px;
+    margin-left: 8px;
+    height: 50px;
+    width: 125px;
+}
+
+.register .my-buttonTwo {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 0px;
+    margin-left: 10px;
+    height: 50px;
+    width: 150px;
+    color: #b7022b
+}
+
+.register input {
+    border: 1px solid white;
+    border-radius: 0px;
+    background-color: rgba(255, 214, 214, 0.1);
+    color: white;
+}
+
+.register .my-message {
+    font-size: 12px;
+}

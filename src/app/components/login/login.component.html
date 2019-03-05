@@ -1,3 +1,7 @@
+<!--<div *ngIf="isLoggedIn; else loggedOut">
+    Logged in as {{roles}}.
+</div>-->
+
 <section class="logo">
     <div class="container-fluid">
         <div class="row">
@@ -14,26 +18,38 @@
         <div class="row">
             <div class="col-12  offset-md-9 col-md-3 my-fondo2 ">
                 <h4 class="text-white text-center pt-5 pb-4">Ingresa a tu cuenta</h4>
-                <form class="mx-3">
+                <form class="mx-3" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                     <div class="form-group">
-                        <input type="text" class="form-control my" placeholder="Ingrese su codigo" autofocus>
+                        <input type="text" class="form-control " placeholder="Ingrese su codigo" autofocus name="username" [(ngModel)]="form.username" #username="ngModel" required />
+                        <div *ngIf="f.submitted && username.invalid">
+                            <div *ngIf="username.errors.required">Username is required</div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control my" placeholder="Ingrese su contraseña">
+                        <input type="password" class="form-control " placeholder="Ingrese su contraseña" name="password" [(ngModel)]="form.password" #password="ngModel" required minlength="6" />
+                        <div *ngIf="f.submitted && password.invalid">
+                            <div *ngIf="password.errors.required">Password is required</div>
+                            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <img src="{{codigo[this.numeroInt]}}" (click)="CambiarCaptcha()" class="form-control img-fluid my-img">
+                        <img src="{{codigo[this.numeroInt]}}" (click)="CambiarCaptcha()" class="form-control img-fluid my-img" required>
+                        <div id="ErrorCatpcha">
+                        </div>
                     </div>
                     <div class="form-group">
                         <p class="text-white">Haz click en la imagen para cambiarla</p>
-                        <span id="aviso"></span>
                     </div>
                     <div class="form-group mb-4">
-                        <input type="text" class="form-control my" id="txtCaptcha" (keyup.enter)="Validar()" placeholder="Ingrese las letras de las imagen">
+                        <input type="text" class="form-control " id="txtCaptcha" (keyup.enter)="f.form.valid && onSubmit()" placeholder="Ingrese las letras de las imagen">
                     </div>
-
-                    <button type="button" class="btn btn-danger my-buttonOne font-weight-bold" (click)="Validar()">Ingresar <i class="fa fa-play-circle text-white"></i></button>
-                    <button type="button" class="btn btn-light  my-buttonTwo font-weight-bold">Limpiar</button>
+                    <button class="btn btn-danger my-buttonOne font-weight-bold">Ingresar <i class="fa fa-play-circle text-white"></i></button>
+                    <button class="btn btn-light  my-buttonTwo font-weight-bold" [routerLink]="['/signup']">Registrar</button>
+                    <div class="form-group mt-3">
+                        <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+                            Login failed: {{errorMessage}}
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

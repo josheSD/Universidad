@@ -1,13 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" [routerLink]="['']">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link active" [routerLink]="['/matricula']">Matricula</a>
-            <a class="nav-item nav-link active" [routerLink]="['/links']">Links </a>
-            <a class="nav-item nav-link " [routerLink]="['/links/add']">Agregar</a>
+<div *ngIf="activarNavbar; else mynavbar">
+    <div class="row my-design">
+        <div class="col-12 pl-md-4">
+            <img src="../../../assets/imagenes/logo.png" [routerLink]="['/matricula']" width="70" class="img-fluid py-4 ml-4 my-pointer" alt="">
+            <nav class="my-links">
+                <a [routerLink]="['/matricula/alumno']" class="d-block py-2 text-white text-decoration-none"><i class="fas fa-user-tie mr-2"></i>Datos alumno</a>
+                <a class="d-block py-2 text-white text-decoration-none"><i class="fas fa-sync-alt mr-2"></i>Matriculate</a>
+                <a class="d-block py-2 text-white text-decoration-none"><i class="fas fa-calendar-minus mr-2"></i>Tu horario</a>
+                <a class="d-block py-2 text-white text-decoration-none"><i class="fas fa-window-restore mr-2"></i>Pensiones</a>
+                <a class="d-block py-2 text-white text-decoration-none"><i class="fas fa-indent mr-2"></i>Solicita una <br> nueva sección</a>
+                <a class="d-block py-2 text-white text-decoration-none" (click)="logout()"><i class="fas fa-sign-in-alt mr-2"></i>Cerrar Sección</a>
+            </nav>
         </div>
     </div>
-</nav>
+
+</div>
+<ng-template #mynavbar>
+    <nav class="navbar navbar-dark my-fondo navbar-expand-md">
+        <div class="container">
+            <a [routerLink]="['/matricula']" class="navbar-brand my-pointer"><img src="../../../assets/imagenes/logoMobile.png" style="height:50px" class="img-fluid "></a>
+            <button type="button" class="navbar-toggler border-white" data-toggle="collapse" data-target="#menu-principal" aria-expanded="fase">
+                            <span class="navbar-toggler-icon "></span>
+                       </button>
+            <div class="collapse navbar-collapse" id="menu-principal">
+                <ul class="navbar-nav ml-auto">
+                    <li [routerLink]="['/matricula/alumno']" class="nav-item"><a [routerLinkActive]="['active']" class="nav-link "><i class="fas fa-user-tie mr-2"></i>Datos alumno</a></li>
+                    <li class="nav-item"><a [routerLinkActive]="['active']" class="nav-link "><i class="fas fa-sync-alt mr-2"></i>Matriculate</a></li>
+                    <li class="nav-item"><a [routerLinkActive]="['active']" class="nav-link "><i class="fas fa-calendar-minus mr-2"></i>Tu horario</a></li>
+                    <li class="nav-item"><a [routerLinkActive]="['active']" class="nav-link "><i class="fas fa-indent mr-2"></i>Solicita una nueva sección</a></li>
+                    <li class="nav-item"><a [routerLinkActive]="['active']" class="nav-link " (click)="logout()"><i class="fas fa-sign-in-alt mr-2"></i>Cerrar Sección</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</ng-template>

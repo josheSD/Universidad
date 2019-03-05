@@ -1,46 +1,104 @@
 <div class="matricula position-relative ">
     <div class="container-fluid position-absolute">
         <div class="row my-bg shadow-sm ">
-            <div class="col-12 col-md-2">
-                <div class="row my-design">
-                    <div class="col-12">
-                        <img src="../../../assets/imagenes/logo.png" width="70" class="img-fluid py-4 ml-4 " alt="">
-                        <nav class="my-links">
-                            <a href="" class="d-block py-2 text-white text-decoration-none">Datos alumno</a>
-                            <a href="" class="d-block py-2 text-white text-decoration-none"><i class="fas fa-sync-alt mr-2"></i>Matriculate</a>
-                            <a href="" class="d-block py-2 text-white text-decoration-none"><i class="fas fa-calendar-minus mr-2"></i>Tu horario</a>
-                            <a href="" class="d-block py-2 text-white text-decoration-none"><i class="fas fa-window-restore mr-2"></i>Pensiones</a>
-                            <a href="" class="d-block py-2 text-white text-decoration-none"><i class="fas fa-indent mr-2"></i>Solicita una <br> nueva sección</a>
-                            <a [routerLink]="['']" class="d-block py-2 text-white text-decoration-none"><i class="fas fa-sign-in-alt mr-2"></i>Cerrar Sección</a>
-                        </nav>
-                    </div>
-                </div>
+            <div class="col-12 col-md-2 bg-mynavbar">
+                <app-nav></app-nav>
             </div>
             <div class="col-12 col-md-7">
-                <div class="row my-bg-2 mt-3 mx-1 shadow-sm">
+                <div class="row my-bg-2 mt-4 mx-1 shadow-sm">
                     <div class="col-12">
                         <div class="d-flex justify-content-between">
                             <h4 class="text-danger">Cursos a Matricular</h4>
                             <a href="" class="pt-1 text-primary">Guía Interactiva de Matrícula de Línea <i class="fa fa-angle-up text-black-50 font-weight-bold ml-3"></i></a>
                         </div>
-
-
                         <hr>
                         <p>Aquí encontrarás la lista de cursos para matricularte. Elige primero los cursos de menor nivel para avanzar de acuerdo con tu plan de estudios.
                         </p>
+                        <table class="table table-responsive my-style-tabla">
+                            <thead class="my-tabla">
+                                <tr class="text-white">
+                                    <th>Item</th>
+                                    <th>Curso</th>
+                                    <th>Horas semanales</th>
+                                    <th>Créd</th>
+                                    <th>Ciclo</th>
+                                    <th>Nro. Insc</th>
+                                    <th>Tipo</th>
+                                    <th>Sección</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let curso of Cursos; let i = index">
+                                <tr>
+                                    <td scope="row">{{i+1}}</td>
+                                    <td>{{curso.nombre}}</td>
+                                    <td>{{curso.Horas}}</td>
+                                    <td>{{curso.Credito}}</td>
+                                    <td>{{curso.Ciclo}}</td>
+                                    <td>{{curso.Nro}}</td>
+                                    <td>{{curso.Tipo}}</td>
+                                    <td>{{curso.Seccion}}</td>
+                                    <td><button class="btn  my-btn" (click)="CustomAlert()">Agregar</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                     </div>
                 </div>
-                <div class="row my-bg-2 mt-4 mx-1 shadow-sm mb-4">
+                <!--EMPIEZA no se mostrara hasta que no hagan Click CustomAlert()-->
+                <div class="row">
                     <div class="col-12">
-                        <h4 class="text-danger">Horario</h4>
+                        <div id="dialogoverlay"></div>
+                        <div id="dialogbox" class="shadow-sm">
+                            <div>
+                                <div id="dialogboxhead" class="bg-danger text-white">Selecciona su horario</div>
+                                <div id="dialogboxbody">
+                                    <div class="d-flex text-white">
+                                        <button class="btn btn-outline-secondary flex-fill">Mañana</button>
+                                        <button class="btn btn-outline-secondary flex-fill">Tarde</button>
+                                        <button class="btn btn-outline-secondary flex-fill">Noche</button>
+
+                                    </div>
+                                    <table class="table table-responsive mt-3">
+                                        <thead class="thead-light">
+                                            <tr class="text-white">
+                                                <th>N° orden</th>
+                                                <th>Docente</th>
+                                                <th>Hora Inicio</th>
+                                                <th>Hora Fin</th>
+                                                <th>Añadir</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngFor="let materia of Materias; let i = index ">
+                                            <tr>
+                                                <td scope="row">{{i}}</td>
+                                                <td>{{materia.title}}</td>
+                                                <td>{{materia.start | split:' '}}</td>
+                                                <td>{{materia.end | split:' '}}</td>
+                                                <td><button class="btn my-btn ActivarButton" (click)="setMateria(i)">Seleccionar</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div id="dialogboxfoot"><button (click)='Cerrar()' class="btn btn-danger">Cerrar</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--TERMINA -->
+                <div class="row my-bg-2 mt-4  mx-1 shadow-sm mb-md-4">
+                    <div class="col-12">
+                        <h4 class="text-danger">Horario por día/semana</h4>
                         <hr>
                         <p>A continuación te mostraremos tu horario seleccionado</p>
                         <div id="calendar"></div>
                     </div>
                 </div>
             </div>
+
             <div class="col-12 col-md-3">
-                <div class="row my-bg-2 mt-3 mr-1 shadow-sm ">
+                <div class="row my-bg-2 mt-4 mx-1 shadow-sm ">
                     <div class="col-12">
                         <div class="d-flex justify-content-between">
                             <h4 class="text-danger">Resumen</h4>
@@ -53,7 +111,7 @@
                         <p><span class="badge badge-danger">00</span> Creditos seleccionados</p>
                     </div>
                 </div>
-                <div class="row my-bg-2 mt-4 mr-1 shadow-sm pb-3 pt-2">
+                <div class="row my-bg-2 mt-4 mx-1 shadow-sm pb-3 pt-2">
                     <div class="col-12">
                         <div class="d-flex justify-content-between">
                             <h4 class="text-danger">Importante</h4>
@@ -65,7 +123,7 @@
                         <button class="btn btn-success btn-block">Procesar Matricula</button>
                     </div>
                 </div>
-                <div class="row my-bg-2 mt-4 mr-1 shadow-sm pb-3 pt-2">
+                <div class="row my-bg-2 mt-4 mb-4 mx-1 shadow-sm pb-3 pt-2">
                     <div class="col-12">
                         <div class="d-flex justify-content-between">
                             <h4 class="text-danger">Contáctanos</h4>
@@ -80,19 +138,6 @@
                         <h6 class="font-weight-bold m-0">Mesa de ayuda</h6>
                         <p class="m-0">mesadeayuda@utp.idat.edu.pe</p>
                         <p class="m-0">01 315-9606</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div id="dialogoverlay"></div>
-                        <div id="dialogbox">
-                            <div>
-                                <div id="dialogboxhead"></div>
-                                <div id="dialogboxbody"></div>
-                                <div id="dialogboxfoot"><button (click)='Cerrar()'>OK</button></div>
-                            </div>
-                        </div>
-                        <button (click)="CustomAlert('Hola')">Custom Alert 2</button>
                     </div>
                 </div>
             </div>

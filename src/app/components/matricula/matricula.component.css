@@ -1,20 +1,39 @@
-.matricula {}
+/* Google Fonts 
+font-family: 'Oswald', sans-serif;
+font-family: 'PT Sans', sans-serif;
+font-family: 'Open Sans', sans-serif;
+*/
+
+.matricula {
+    /*font-family: 'PT Sans', sans-serif;*/
+}
 
 .matricula .my-bg {
     background-color: #f2f2f2;
+}
+
+.matricula .my-style-tabla {
+    font-size: 11px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .matricula .my-bg-2 {
     background-color: white;
 }
 
-.matricula .my-design {
-    height: 100vh;
+.matricula .my-tabla {
     background-color: hsl(356, 61%, 51%);
 }
 
-.matricula .my-links a:hover {
-    background-color: hsl(0, 98%, 56%)
+
+/* esperando a usar   rgb(222, 91, 73); */
+
+.matricula .my-btn {
+    font-size: 9px;
+    background-color: hsl(87, 100%, 35%);
+    border: 1px solid hsl(87, 100%, 35%);
+    color: white;
+    font-weight: bold;
 }
 
 
@@ -25,7 +44,7 @@
     position: fixed;
     top: 0px;
     left: 0px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
     width: 100%;
     z-index: 10;
 }
@@ -33,9 +52,9 @@
 #dialogbox {
     display: none;
     position: fixed;
-    background: #000;
     border-radius: 7px;
-    width: 550px;
+    width: 830px;
+    /* modifica el ancho S1 */
     z-index: 10;
 }
 
@@ -45,20 +64,25 @@
 }
 
 #dialogbox>div>#dialogboxhead {
-    background: #666;
     font-size: 19px;
     padding: 10px;
-    color: #CCC;
 }
 
 #dialogbox>div>#dialogboxbody {
-    background: #333;
+    background: white;
     padding: 20px;
     color: #FFF;
 }
 
 #dialogbox>div>#dialogboxfoot {
-    background: #666;
+    background: white;
     padding: 10px;
     text-align: right;
+}
+
+
+/* parte navbar */
+
+.bg-mynavbar {
+    background-color: hsl(356, 61%, 51%);
 }

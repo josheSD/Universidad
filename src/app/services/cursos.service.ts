@@ -9,7 +9,7 @@ import { Cursos } from '../models/cursos';
 })
 export class CursosService {
 
-  API_URL = 'http://localhost:4000';
+  API_URL = 'http://localhost:8080/api';
 
   constructor(
     private http: HttpClient
@@ -19,8 +19,16 @@ export class CursosService {
     return this.http.get(`${this.API_URL}/matricula/cursos`);
   }
 
-  saveCurso(curso: Cursos):Observable<any>{
-    return this.http.post(`${this.API_URL}/matricula/cursos/add`,curso);
+  getMaterias(): Observable<any>{
+    return this.http.get(`${this.API_URL}/matricula/materias`);
+  }
+
+  getMateria(): Observable<any>{
+    return this.http.get(`${this.API_URL}/matricula/materia`);
+  }
+
+  saveMateria(materia: Cursos):Observable<any>{
+    return this.http.post(`${this.API_URL}/matricula/materia/add`,materia);
   }
 
 }

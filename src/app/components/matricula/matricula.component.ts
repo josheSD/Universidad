@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CursosService } from '../../services/cursos.service';
-import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import 'fullcalendar';
 import { Cursos } from '../../models/cursos';
-
 
 @Component({
   selector: 'app-matricula',
@@ -15,26 +13,66 @@ export class MatriculaComponent implements OnInit {
 
   public curso : Cursos;
   public ok : any;
+  public Cursos: any[];
+  public Materias: any[];
+  public MessageSuccess: any;
+  public ButtonSelecionado : any;
 
   constructor(
-    private cursosService: CursosService,
-    private router:Router
+    private cursosService: CursosService
   ) {
     this.curso = new Cursos('','','','');
    }
 
   ngOnInit() {
-      this.Calendar();
+      this.ObtenerCursos();
+      this.getCalendar();
+      this.ObtenerMaterias();
+  }
+  
+  
+
+  ObtenerMaterias(){
+    this.cursosService.getMaterias().subscribe(
+      res=>{
+           this.Materias = res;
+      },
+      err=>{
+        console.log(err)
+      }
+    )
   }
 
-  Calendar(){
-    
+  ObtenerCursos(){
     this.cursosService.getCursos().subscribe(
+      res =>{
+        this.Cursos = res;
+      },
+      err =>{
+        console.log(err);
+      }
+    )
+  }
+
+  getCalendar(){
+
+    let VisualizacionName :string;
+    let winW = window.innerWidth;
+    let PrevNext : string;
+    if(winW>768){
+      VisualizacionName = 'agendaWeek';
+      PrevNext = '[]';
+    }else{
+      VisualizacionName = 'agendaDay';
+      PrevNext = 'prev,next'
+    }
+
+    this.cursosService.getMateria().subscribe(
       res =>{
              $('#calendar').fullCalendar({
               slotLabelFormat:"H:mm",     //cambia a formato 24:00 hours primera columna
                                           //themeSystem: 'bootstrap4', agrega los styles 
-              defaultView: 'agendaWeek',  //muestra la ventana de semana como main
+              defaultView: VisualizacionName,  //muestra la ventana de semana como main
               locale:'es',                //cambia el idioma a castellano
               allDaySlot:false,           //no muestra accion del día
               timeFormat: 'H:mm',         //cambia formato de 24:00 hours en los días
@@ -43,62 +81,63 @@ export class MatriculaComponent implements OnInit {
 
               header: {
                 left: 'agendaDay,agendaWeek',
-                right: 'today prev,next',
+                right: PrevNext, //today prev,next o []
               center:'title'
               },
           
               views: {
                 week: {
                   // options apply to basicWeek and agendaWeek views
-                  columnHeaderFormat:'dddd D',
+                  columnHeaderFormat:'dddd ',  //dddd D
                   minTime:'07:00:00',
                   maxTime:'23:59:00',
                   contentHeight:'auto',
-                  titleFormat: 'MMMM YYYY'
+                  titleFormat: '[]'    //MMMM YYYY
                 },
                 day: {
                   // options apply to basicDay and agendaDay views
-                  columnHeaderFormat:'dddd D MMMM YYYY',
+                  columnHeaderFormat:'dddd', //dddd D MMMM YYYY
                   minTime:'07:00:00',
                   maxTime:'23:59:00',
                   contentHeight:'auto',
                   titleFormat:'[]'
                 },
               },
-              events:res
+               events: res
             });
             $('.fc-agendaDay-button').text('Dia');
             $('.fc-today-button').text('hoy');
             $('.fc-agendaWeek-button').text('semana');
-
       },
       err => console.log(err)
     )
 
   }
 
-  saveCurso(form){
-     this.cursosService.saveCurso(this.curso).subscribe(
+  setMateria(index){
+     this.ButtonSelecionado = index;
+     this.cursosService.saveMateria(this.Materias[index]).subscribe(
        res =>{
-         this.Calendar();
-         form.reset();
+         this.MessageSuccess = res;
+         this.getCalendar();
+         this.CambiarBotonSeleccionar();
        },
        err => console.log(err)
      )
   }
 
-  CustomAlert(dialog){
+  CustomAlert(){
     var winW = window.innerWidth;
         var winH = window.innerHeight;
         var dialogoverlay = document.getElementById('dialogoverlay');
         var dialogbox = document.getElementById('dialogbox');
         dialogoverlay.style.display = "block";
         dialogoverlay.style.height = winH+"px";
-        dialogbox.style.left = (winW/2) - (550 * .5)+"px";
+        dialogbox.style.left = (winW/2) - (830 * .5)+"px"; //modifica ancho S1
         dialogbox.style.top = "100px";
         dialogbox.style.display = "block";
-        document.getElementById('dialogboxhead').innerHTML = "Este es el mensaje ";
-        document.getElementById('dialogboxbody').innerHTML = dialog;
+        //document.getElementById('dialogboxhead').innerHTML = "Este es el mensaje ";
+        //document.getElementById('dialogboxbody').innerHTML = dialog;
         
   }
    
@@ -107,7 +146,13 @@ export class MatriculaComponent implements OnInit {
 		document.getElementById('dialogoverlay').style.display = "none";
   }
   
-
+  CambiarBotonSeleccionar(){
+     let buton = $('.ActivarButton')[this.ButtonSelecionado];
+     console.log(buton);
+     buton.style.border = '1px solid hsl(356, 61%, 51%)';
+     buton.style.background = "hsl(356, 61%, 51%)";
+     buton.innerText = "Seleccionado";
+  }
  
 
   

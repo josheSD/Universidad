@@ -1,0 +1,15 @@
+.data .my-bg {
+    background-color: #f2f2f2;
+}
+
+.data .bg-mynavbar {
+    background-color: hsl(356, 61%, 51%);
+}
+
+.data .my-bg-2 {
+    background-color: white;
+}
+
+.data .my-height {
+    height: 100vh;
+}
