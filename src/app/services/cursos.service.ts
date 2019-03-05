@@ -9,7 +9,7 @@ import { Cursos } from '../models/cursos';
 })
 export class CursosService {
 
-  API_URL = 'http://localhost:8080/api';
+  API_URL = 'https://joshesd-universidad.herokuapp.com/api';
 
   constructor(
     private http: HttpClient

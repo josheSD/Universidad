@@ -8,9 +8,9 @@ import { UserService } from '../../services/user.service';
 })
 export class DataAlumnoComponent implements OnInit {
 
-  userInfo: any;
-  board: string;
-  errorMessage: string;
+  public userInfo: any;
+  public board: string;
+  public errorMessage: string;
 
   constructor(private userService: UserService) { }
 
@@ -18,9 +18,9 @@ export class DataAlumnoComponent implements OnInit {
     this.userService.getUserBoard().subscribe(
       data => {
         this.userInfo = {
+          username: data.user.username,
           name: data.user.name,
-          email: data.user.email,
-          username: data.user.username
+          email: data.user.email
         };
         this.board = data.description;
       },

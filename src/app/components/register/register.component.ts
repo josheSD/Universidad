@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() { }
 
   onSubmit() {
-    console.log(this.form);
+    
 
     this.signupInfo = new SignUpInfo(
       this.form.name,
@@ -38,7 +38,6 @@ export class RegisterComponent implements OnInit {
         this.MessageSuccess = data;
       },
       error => {
-        console.log(error);
         this.errorMessage = error.error;
         this.isSignUpFailed = true;
       }

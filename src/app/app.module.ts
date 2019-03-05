@@ -40,7 +40,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['http://localhost:8080','http://localhost:4200']
+        whitelistedDomains: ['http://localhost:8080','http://localhost:4200','https://joshesd-universidad.herokuapp.com/']
       }
     })
 
